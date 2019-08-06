@@ -12,7 +12,7 @@ Ambiente para servicios de Rest Test
 
 ### Clonar repositorio 
 ```
-git clone ruta.git
+git clone https://github.com/gbolivar/tecnica_code.git webroot
 
 ```
 
