@@ -4,6 +4,7 @@ services:
       container_name: examen-database
       image: mysql:5.7
       restart: always
+      hostname: mysql-vm
       environment:
         MYSQL_DATABASE: 'examen_db'
         MYSQL_USER: 'admin'
@@ -25,6 +26,7 @@ services:
       image: nginx:alpine
       container_name: examen-webserver
       working_dir: /apps
+      hostname: webserver-vm
       volumes:
           - ./webroot:/apps
           - ./settings/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
@@ -43,6 +45,9 @@ services:
       build: settings/php-fpm
       container_name: examen-php-fpm
       working_dir: /apps
+      hostname: php-fpm-vm
+      # depends_on: 
+        # - mysql
       volumes:
         - ./webroot:/apps
         - ./settings/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
@@ -55,4 +60,6 @@ services:
 #   rests_net:
 #     external:
 #       name: tecnico_rests_net
+
+
 

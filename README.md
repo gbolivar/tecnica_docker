@@ -16,13 +16,12 @@ git clone https://github.com/gbolivar/tecnica_code.git webroot
 
 ```
 
-
-### Instalar el network
+### Ver la ip del Host de base de datos
 
 ```
-docker network rm tecnico_rests_net
-docker network prune -f
-docker-compose -f networks.yml up net_tecnica
+docker inspect examen-database | grep 172
+debes tomar el "IPAddress": "172.20.0.4",
+Esa ip debes modificarla en el .env del sistema de laravel llamado gateway
 ```
 
 ### Servicios Ngnix, php, php5
