@@ -20,9 +20,9 @@ git clone https://github.com/gbolivar/tecnica_code.git webroot
 ### Instalar el network
 
 ```
-docker network rm docker_rests_net
+docker network rm tecnico_rests_net
 docker network prune -f
-docker-compose -f networks.yml up net_tests
+docker-compose -f networks.yml up net_tecnica
 ```
 
 ### Servicios Ngnix, php, php5
@@ -35,6 +35,13 @@ docker-compose up -d
 ```
 sh startServices.sh
 ```
+### Install composer app ###
+```
+docker exec -it examen-php-fpm /bin/bash
+cd gateway
+composer install
+
+```
 
 ### Request por ShellScript ##
 ```
@@ -43,7 +50,7 @@ sh request.sh
 
 ### Command computar artisan ##
 ```
-php artisan command:computar 2019-12-0
+php artisan command:computar 2019-12-07
 ```
 
 
