@@ -1,7 +1,7 @@
 #!/bin/bash
 ### Ing. Gregorio Bolivar <elalconxvi@gmail.com>
 ## Start Services ##
-docker network rm tecnico_rest_net
+docker network rm tecnico_rests_net
 docker network prune -f
 docker-compose -f networks.yml up net_tests
 
