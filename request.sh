@@ -1,4 +1,6 @@
 #!/bin/bash
+### Ing. Gregorio Bolivar <elalconxvi@gmail.com>
+
 ## Request ##
 curl -X POST http://10.10.0.3:84/api/suscripcion \
     -H "User-Agent: Mozilla/2.2" \
