@@ -15,9 +15,11 @@ services:
         - '3306'
       volumes:
         - ./serverDatabases/mysql:/var/lib/mysql
-      networks:
-        rests_net:
-          ipv4_address: 170.50.0.2
+      # networks:
+      #   rests_net:
+      #     ipv4_address: 170.50.0.2
+      environment:
+        VIRTUAL_HOST: mysql.localhost
 
     webserver:
       image: nginx:alpine
@@ -30,9 +32,11 @@ services:
       ports:
        - "84:84"
 
-      networks:
-        rests_net:
-          ipv4_address: 170.50.0.3
+      # networks:
+      #   rests_net:
+      #     ipv4_address: 170.50.0.3
+      environment:
+        VIRTUAL_HOST: webserver.localhost
 
     php-fpm:
       build: settings/php-fpm
@@ -41,11 +45,13 @@ services:
       volumes:
         - ./webroot:/apps
         - ./settings/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
-      networks:
-        rests_net:
-          ipv4_address: 170.50.0.4
-networks:
-  rests_net:
-    external:
-      name: tecnico_rests_net
+      # networks:
+        # rests_net:
+        #   ipv4_address: 170.50.0.4
+      environment:
+        VIRTUAL_HOST: php-fpm.localhost
+# networks:
+#   rests_net:
+#     external:
+#       name: tecnico_rests_net
 
